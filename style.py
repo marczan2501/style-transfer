@@ -214,7 +214,7 @@ class StyleTransfer(object):
         Style transfer class.
     """
 
-    def __init__(self, model_name, use_pbar=True):
+    def __init__(self, model_name, use_pbar=False):
         """
             Initialize the model used for style transfer.
 
@@ -398,7 +398,7 @@ class StyleTransfer(object):
         """
 
         # assume that convnet input is square
-        orig_dim = min(self.net.blobs["data"].shape[2:])
+        orig_dim = min(self.net.blobs["data"].data.shape[2:])
 
         # rescale the images
         scale = max(length / float(max(img_style.shape[:2])),
